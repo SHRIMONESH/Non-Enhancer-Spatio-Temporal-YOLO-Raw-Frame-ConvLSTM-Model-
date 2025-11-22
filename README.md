@@ -8,9 +8,7 @@
 
 ## 📖 Overview
 
-**Non-Enhancer Spatio-Temporal YOLO (NEST-YOLO)** is a purely data-driven object detection model designed for nighttime video sequences. 
-
-
+**Non-Enhancer Spatio-Temporal YOLO (NEST-YOLO)** is a purely data-driven object detection model designed for nighttime video sequences.
 
 Unlike traditional low-light models, NEST-YOLO **does not use any image enhancement** (no CLAHE, Gamma correction, or denoising). Instead, it relies entirely on temporal cues and memory to learn invariant representations directly from raw, noisy frames. By aggregating features across time using ConvLSTM and Attention, the model filters out random noise and light fluctuations, providing stable detection without the computational overhead of preprocessing pipelines.
 
@@ -29,12 +27,15 @@ Unlike traditional low-light models, NEST-YOLO **does not use any image enhancem
 ## 🏗️ Architecture
 
 The model pipeline is designed to accept raw video sequences and output stable detections.
-<img width="2048" height="2048" alt="app3 (2)" src="https://github.com/user-attachments/assets/66819158-e15d-40b9-955a-e41368fa1517" />
-<img width="2048" height="2048" alt="sap3" src="https://github.com/user-attachments/assets/86fa57d5-44b9-418e-9494-8b23552be5e8" />
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/66819158-e15d-40b9-955a-e41368fa1517" width="45%" alt="Architecture Diagram 1" />
+  <img src="https://github.com/user-attachments/assets/86fa57d5-44b9-418e-9494-8b23552be5e8" width="45%" alt="Architecture Diagram 2" />
+</p>
 
 ```mermaid
 graph TD
-    Input[Raw Video Sequence] --> Backbone[YOLO Backbone (Frame-wise)]
+    Input[Raw Video Sequence] --> Backbone["YOLO Backbone (Frame-wise)"]
     Backbone --> Feat[Multi-Scale Features]
     
     subgraph "Temporal Aggregation"
